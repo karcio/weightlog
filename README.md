@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS `WEIGHT_LOG` (
   `WEIGHT` double NOT NULL
 );
 ```
+#### Create view
+###### VIEW_WEIGHT
 ```sh
 DROP TABLE IF EXISTS `VIEW_WEIGHT`;
 
