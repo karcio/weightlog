@@ -30,7 +30,16 @@ app.get('/', function(req, rep) {
       result: result
     });
   });
-})
+});
+app.get('/avg', function(req, rep) {
+  con.query("SELECT * FROM `VIEW_WEIGHT_AVG`", function(err, result, fields) {
+    if (err) throw err;
+    rep.render('avg', {
+      result: result
+    });
+    console.log(result);
+  });
+});
 app.get("/insert", function(req, res) {
   res.render('insert');
 });

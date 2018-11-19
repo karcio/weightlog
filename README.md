@@ -9,7 +9,7 @@ Weight logger - web application to measure your Weight
 ## Requirements
 * mysql installed
 * nodejs with modules: bootstrap, ejs, express, mysql
-  * for install above mudules run following command
+  * for install above modules run following command
   ```
   npm install
   ```
