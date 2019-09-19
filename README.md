@@ -5,6 +5,8 @@ Weight logger - web application to measure your Weight
 
 * track weight
 * insert weight
+* display graph //TODO
+* display average weight
 
 ## Requirements
 * mysql installed
@@ -14,23 +16,36 @@ Weight logger - web application to measure your Weight
   npm install
   ```
 ## Configuration steps
-#### Create database
-```sh
-CREATE DATABASE IF NOT EXISTS 'DATABASE';
+### Create database
 ```
-#### Create tables
-###### WEIGHT_LOG
-```sh
-CREATE TABLE IF NOT EXISTS `WEIGHT_LOG` (
-  `ID` int(11) NOT NULL,
-  `DATE` date NOT NULL,
-  `WEIGHT` double NOT NULL
-);
+CREATE DATABASE IF NOT EXISTS weightdb; 
 ```
-#### Create view
-###### VIEW_WEIGHT
-```sh
-DROP TABLE IF EXISTS `VIEW_WEIGHT`;
+### Create table
+```
+DROP TABLE IF EXISTS weight_log; 
+CREATE TABLE IF NOT EXISTS weight_log
+  (
+     id     INT(11) NOT NULL auto_increment,
+     date   DATE NOT NULL,
+     weight DOUBLE NOT NULL,
+     PRIMARY KEY (id)
+  ); 
+```
+### Create views
+```
+DROP TABLE IF EXISTS view_weight; 
 
-CREATE VIEW `VIEW_WEIGHT` AS select `WEIGHT_LOG`.`DATE` AS `DATE`,`WEIGHT_LOG`.`WEIGHT` AS `WEIGHT` from `WEIGHT_LOG` order by `WEIGHT_LOG`.`DATE`;
+CREATE view view_weight
+AS
+  SELECT date,
+         weight
+  FROM   weight_log
+  ORDER  BY date DESC; 
+
+DROP TABLE IF EXISTS view_weight_avg; 
+
+CREATE view view_weight_avg
+AS
+  SELECT Avg(weight_log.weight) AS AVG
+  FROM   weight_log; 
 ```
