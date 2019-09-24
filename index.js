@@ -9,31 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  var myAvr = checkAvg();
-  pool.connect((err, client, done) => {
-    const query = "SELECT * FROM weight_log";
-    client.query(query, (error, result) => {
-      done();
-      if (error) {
-        res.status(400).json({ error });
-      }
-      if (result.rows < "1") {
-        res.status(404).send({
-          status: "Failed",
-          message: "No weight information found"
-        });
-      } else {
-        res.render("index", {
-          result: result.rows
-          //checkavg: myAvr
-        });
-        console.log(result.rows);
-        //console.log(myAvr);
-      }
-    });
-  });
-});
+app.get("/", getWeight, getAvgWeight, renderMainPage);
 
 app.get("/insert", (req, res) => {
   res.render("insert");
@@ -83,8 +59,29 @@ app.get("/avg", (req, res) => {
   });
 });
 
-var checkAvg = function(req, res) {
-  var valueAvg;
+function getWeight(req, res, next) {
+  pool.connect((err, client, done) => {
+    const query = "SELECT * FROM weight_log order by date desc";
+    client.query(query, (error, result) => {
+      done();
+      if (error) {
+        res.status(400).json({ error });
+      }
+      if (result.rows < "1") {
+        res.status(404).send({
+          status: "Failed",
+          message: "No weight information found"
+        });
+      } else {
+        req.weight = result.rows;
+        console.log(result.rows);
+        return next();
+      }
+    });
+  });
+}
+
+function getAvgWeight(req, res, next) {
   pool.connect((err, client, done) => {
     const query =
       "select round(avg(weight)::numeric,2) as avg from weight_log;";
@@ -99,14 +96,20 @@ var checkAvg = function(req, res) {
           message: "No weight information found"
         });
       } else {
-        valueAvg = result.rows;
-
+        req.avg = result.rows;
         console.log(result.rows);
+        next();
       }
-      return valueAvg;
     });
   });
-};
+}
+
+function renderMainPage(req, res) {
+  res.render("index", {
+    weight: req.weight,
+    avg: req.avg
+  });
+}
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

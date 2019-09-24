@@ -40,18 +40,26 @@
 
   <body>
     <div class="container">
-      <% include navbar %> <% var avg; %>
+      <% include navbar %>
 
-      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Dark card title</h5>
-          <p class="card-text"></p>
+      <div class="row ">
+        <div class="col">
+          <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Avg</div>
+            <div class="card-body">
+              <h5 class="card-title"><%= avg[0].avg %></h5>
+              <p class="card-text">current</p>
+            </div>
+          </div>
         </div>
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Dark card title</h5>
-          <p class="card-text"></p>
+        <div class="col align-self-end">
+          <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">BMI</div>
+            <div class="card-body">
+              <h5 class="card-title">30</h5>
+              <p class="card-text">current</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -62,13 +70,13 @@
           <th>date:</th>
           <th>weight:</th>
         </tr>
-        <% for(var i=0; i < result.length; i++) { %>
+        <% for(var i=0; i < weight.length; i++) { %>
         <tr>
           <td>
-            <%= result[i].date %>
+            <%= weight[i].date %>
           </td>
           <td>
-            <%= result[i].weight %>
+            <%= weight[i].weight %>
           </td>
         </tr>
         <% } %>

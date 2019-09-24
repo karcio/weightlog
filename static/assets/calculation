@@ -1,0 +1,2 @@
+Formula: weight (kg) / [height (m)]2
+Calculation: [weight (kg) / height (cm) / height (cm)] x 10,000
