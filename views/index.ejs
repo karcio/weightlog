@@ -40,7 +40,21 @@
 
   <body>
     <div class="container">
-      <% include navbar %>
+      <% include navbar %> <% var avg; %>
+
+      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Dark card title</h5>
+          <p class="card-text"></p>
+        </div>
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Dark card title</h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
+
       <h2 class="text-center">My weight log</h2>
 
       <table class="table table-striped">
@@ -51,10 +65,10 @@
         <% for(var i=0; i < result.length; i++) { %>
         <tr>
           <td>
-            <%= result[i].DATE %>
+            <%= result[i].date %>
           </td>
           <td>
-            <%= result[i].WEIGHT %>
+            <%= result[i].weight %>
           </td>
         </tr>
         <% } %>

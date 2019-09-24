@@ -43,3 +43,31 @@ AS
   SELECT Avg(weight_log.weight) AS AVG
   FROM   weight_log; 
 ```
+
+# PG
+```
+sudo dnf install postgresql-server postgresql
+sudo systemctl start postgresql
+
+sudo su - postgres 
+psql -c "alter user postgres with password 'pa88w0rd'" 
+createuser dbuser
+createdb weightdb -O dbuser
+sudo -u postgres psql
+psql=# alter user dbuser with encrypted password 'pa88w0rd';
+psql=# grant all privileges on database weightdb to dbuser;
+
+sudo vim /var/lib/pgsql/data/pg_hba.conf
+# IPv4 local connections:
+change
+host    all             all             127.0.0.1/32            ident
+to
+host    all             all             127.0.0.1/32            md5
+
+sudo systemctl restart postgresql.service
+
+npm run create
+
+
+```
+

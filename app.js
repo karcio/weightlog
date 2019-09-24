@@ -1,5 +1,5 @@
+var port = 3000;
 var fs = require("fs");
-//var https = require('https'); # https
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
 var express = require("express");
@@ -16,15 +16,7 @@ var con = mysql.createConnection({
   password: "sklejka",
   database: "WEIGHTDB"
 });
-// https
-//const privateKey = fs.readFileSync('/etc/letsencrypt/live/domain/privkey.pem', 'utf8');
-//const certificate = fs.readFileSync('/etc/letsencrypt/live/domain/cert.pem', 'utf8');
-//const ca = fs.readFileSync('/etc/letsencrypt/live/domain/chain.pem', 'utf8');
-//const credentials = {
-//  key: privateKey,
-//  cert: certificate,
-//  ca: ca
-//};
+
 app.set("view engine", "ejs");
 app.get("/", function(req, rep) {
   con.query("SELECT * FROM `VIEW_WEIGHT`", function(err, result, fields) {
@@ -65,12 +57,6 @@ app.post("/insert", function(req, res) {
   });
 });
 
-app.listen(3000, function() {
-  console.log("Server is running on port 3000");
+app.listen(port, function() {
+  console.log("Server is running on port: " + port);
 });
-
-//https
-//const httpsServer = https.createServer(credentials, app);
-//httpsServer.listen(9443, () => {
-//  console.log('HTTPS Server running on port 9443');
-//});
