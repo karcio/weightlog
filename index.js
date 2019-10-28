@@ -1,8 +1,11 @@
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { pool } = require("./services/db");
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, "static")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

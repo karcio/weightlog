@@ -15,53 +15,82 @@
     ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My weight</title>
-    <style>
-      body {
-        background-color: whitesmoke;
-      }
-
-      h1 {
-        color: navy;
-        margin-left: 20px;
-      }
-
-      table,
-      th,
-      td {
-        border: 1px solid lightgrey;
-        padding: 5px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5px;
-        margin-bottom: 5px;
-      }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
   </head>
 
   <body>
-    <div class="container">
-      <% include navbar %>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
 
-      <div class="row ">
-        <div class="col">
-          <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">Avg</div>
-            <div class="card-body">
-              <h5 class="card-title"><%= avg[0].avg %></h5>
-              <p class="card-text">current</p>
-            </div>
-          </div>
-        </div>
-        <div class="col align-self-end">
-          <div class="card text-center bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">BMI</div>
-            <div class="card-body">
-              <h5 class="card-title">30</h5>
-              <p class="card-text">current</p>
-            </div>
+    <section id="cover">
+      <div class="cover-caption">
+        <div class="container">
+          <div class="col-sm-10 col-sm-offset-1">
+            <h1 class="display-4">Weight logger</h1>
+            <p class="lead">
+              This is a web application which help you to monitor your weight,
+              BMI, highest and lowest weight.
+            </p>
           </div>
         </div>
       </div>
+    </section>
+
+    <% include navbar %>
+    <div class="container">
+      <section class="cards">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card-group">
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title">91.21 kg</h4>
+                  <h6 class="subtitle">Average</h6>
+                </div>
+                <img src="assets/images/diet-avg.jpg" alt="obrazek" />
+              </div>
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title">96.7 kg</h4>
+                  <h6 class="subtitle">Lowest weight</h6>
+                </div>
+                <img src="assets/images/diet-low.jpg" alt="obrazek" />
+              </div>
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title">100.7 kg</h4>
+                  <h6 class="subtitle">Highest weight</h6>
+                </div>
+                <img src="assets/images/weight-loss.jpg" alt="obrazek" />
+              </div>
+              <div class="card">
+                <div class="card-block">
+                  <h4 class="card-title">30.20</h4>
+                  <h6 class="subtitle">BMI</h6>
+                </div>
+                <img src="assets/images/bmi.jpg" alt="obrazek" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <h2 class="text-center">My weight log</h2>
 
@@ -81,8 +110,8 @@
         </tr>
         <% } %>
       </table>
-
-      <% include footer %>
     </div>
+
+    <% include footer %>
   </body>
 </html>
