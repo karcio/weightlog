@@ -14,7 +14,7 @@
       crossorigin="anonymous"
     ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My weight</title>
+    <title>My weight log</title>
     <link
       href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
       rel="stylesheet"
@@ -61,21 +61,21 @@
             <div class="card-group">
               <div class="card">
                 <div class="card-block">
-                  <h4 class="card-title">91.21 kg</h4>
+                  <h4 class="card-title"><%= avg[0].avg %> kg</h4>
                   <h6 class="subtitle">Average</h6>
                 </div>
                 <img src="assets/images/diet-avg.jpg" alt="obrazek" />
               </div>
               <div class="card">
                 <div class="card-block">
-                  <h4 class="card-title">96.7 kg</h4>
+                  <h4 class="card-title"><%= minWeight[0].min %> kg</h4>
                   <h6 class="subtitle">Lowest weight</h6>
                 </div>
                 <img src="assets/images/diet-low.jpg" alt="obrazek" />
               </div>
               <div class="card">
                 <div class="card-block">
-                  <h4 class="card-title">100.7 kg</h4>
+                  <h4 class="card-title"><%= maxWeight[0].max %> kg</h4>
                   <h6 class="subtitle">Highest weight</h6>
                 </div>
                 <img src="assets/images/weight-loss.jpg" alt="obrazek" />
