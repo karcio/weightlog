@@ -198,6 +198,6 @@ app.get("/avg", (req, res) => {
   });
 });
 
-app.get('/about', (req, res) => res.send('Test url - working :)'))
+app.get('/about', (req, res) => res.send('Test url - working'))
 
 app.listen(port, () => console.log("Example app listening on port 3000!"));
