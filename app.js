@@ -5,10 +5,10 @@ const app = express();
 const port = 3000;
 const pg = require("pg");
 const pool = new pg.Pool({
-  user: "dbuser",
+  user: "postgres",
   host: "localhost",
   database: "weightdb",
-  password: "pa88w0rd",
+  password: "postgres",
   port: "5432"
 });
 
