@@ -5,10 +5,10 @@ const app = express();
 const port = 3000;
 const pg = require("pg");
 const pool = new pg.Pool({
-  user: "postgres",
+  user: "dbuser",
   //host: "localhost",
   database: "weightdb",
-  password: "postgres",
+  password: "pa88w0rd",
   port: "5432"
 });
 
@@ -25,12 +25,13 @@ app.get(
   getAvgWeight,
   getMinWeight,
   getMaxWeight,
-  getLastRecord,
+  //getLastRecord,
   renderMainPage
 );
 
 function getWeight(req, res, next) {
   pool.connect((err, client, done) => {
+    //console.log('err=', err);
     const query = "SELECT * FROM weight_log order by date desc";
     client.query(query, (error, result) => {
       done();
@@ -198,6 +199,6 @@ app.get("/avg", (req, res) => {
   });
 });
 
-app.get('/about', (req, res) => res.send('Test url - working'))
+app.get("/about", (req, res) => res.send("Test url - working"));
 
 app.listen(port, () => console.log("Example app listening on port 3000!"));
