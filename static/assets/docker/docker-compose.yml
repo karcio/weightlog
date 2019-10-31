@@ -1,0 +1,29 @@
+# docker-compose.yml
+version: "3"
+
+services:
+  app:
+    restart: always
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+
+  postgres:
+    restart: always
+    image: postgres:11.5-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      #POSTGRES_DB: weight_log
+
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db_create.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+
+volumes:
+  db-data:
