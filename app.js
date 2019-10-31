@@ -25,7 +25,7 @@ app.get(
   getAvgWeight,
   getMinWeight,
   getMaxWeight,
-  //getLastRecord,
+  getLastRecord,
   renderMainPage
 );
 
