@@ -2,14 +2,14 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const port = 3000;
+const port = 5000;
 const pg = require("pg");
 const pool = new pg.Pool({
   user: "dbuser",
   host: "10.1.0.101",
   database: "weightdb",
   password: "pa88w0rd",
-  port: "5432"
+  port: "5434"
 });
 
 app.use(express.static(path.join(__dirname, "static")));
