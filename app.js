@@ -9,7 +9,7 @@ const pool = new pg.Pool({
   host: "10.1.0.101",
   database: "weightdb",
   password: "pa88w0rd",
-  port: "5434"
+  port: "5433"
 });
 
 app.use(express.static(path.join(__dirname, "static")));
@@ -200,6 +200,4 @@ app.get("/avg", (req, res) => {
 });
 
 app.get("/about", (req, res) => res.send("Test url - working"));
-
-//app.listen(port, () => console.log("Example app listening on port ${port}5000!"));
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
