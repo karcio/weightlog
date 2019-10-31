@@ -11,8 +11,5 @@ npm install -g nodemon
 echo "Install app dependencies"
 npm install
 
-echo "Audit"
-npm audit
-
-hostname -i
+#hostname -i
 nodemon app.js 

@@ -1,5 +1,12 @@
 CREATE USER dbuser ENCRYPTED PASSWORD 'pa88w0rd' NOSUPERUSER NOCREATEDB NOCREATEROLE;
 CREATE DATABASE weightdb WITH OWNER dbuser;
-GRANT ALL PRIVILEGES ON DATABASE weightdb TO dbuser;
 \c weightdb;
 CREATE TABLE IF NOT EXISTS weight_log(id SERIAL PRIMARY KEY, date DATE NOT NULL DEFAULT CURRENT_DATE, weight NUMERIC(4,1) NOT NULL );
+INSERT INTO weight_log (date, weight) VALUES ('2019-10-01','99');
+INSERT INTO weight_log (date, weight) VALUES ('2019-10-02','98.6');
+INSERT INTO weight_log (date, weight) VALUES ('2019-10-03','98.7');
+INSERT INTO weight_log (date, weight) VALUES ('2019-10-04','97.8');
+INSERT INTO weight_log (date, weight) VALUES ('2019-10-05','97.6');
+INSERT INTO weight_log (date, weight) VALUES ('2019-10-06','98');
+GRANT ALL PRIVILEGES ON DATABASE weightdb TO dbuser;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO dbuser;

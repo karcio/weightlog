@@ -1,4 +1,3 @@
-# docker-compose.yml
 version: "3"
 
 services:
@@ -6,24 +5,42 @@ services:
     restart: always
     build: .
     depends_on:
-      - postgres
+      - db
+    links:
+      - db
     ports:
       - "3000:3000"
       - "9229:9229"
-
-  postgres:
+    #environment:
+    #  DATABASE_URL: postgres://dbuser:pa88w0rd@db:5432/weightdb
+    #  NODE_ENV: development
+    #  PORT: 3000
+    networks:
+      test:
+        ipv4_address: 10.1.0.100
+  db:
     restart: always
     image: postgres:11.5-alpine
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      #POSTGRES_DB: weight_log
 
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./db_create.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - 5432:5432
+    networks:
+      test:
+        ipv4_address: 10.1.0.101
 
 volumes:
   db-data:
+
+networks:
+  test:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.0.0/24

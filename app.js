@@ -31,7 +31,6 @@ app.get(
 
 function getWeight(req, res, next) {
   pool.connect((err, client, done) => {
-    console.log("err=", err);
     const query = "SELECT * FROM weight_log order by date desc";
     client.query(query, (error, result) => {
       done();
