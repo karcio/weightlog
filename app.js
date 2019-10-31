@@ -9,7 +9,7 @@ const pool = new pg.Pool({
   //host: "10.1.0.101",
   database: "weightdb",
   password: "pa88w0rd",
-  port: "5432"
+  port: "5433"
 });
 
 app.use(express.static(path.join(__dirname, "static")));
