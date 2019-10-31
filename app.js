@@ -6,7 +6,7 @@ const port = 3000;
 const pg = require("pg");
 const pool = new pg.Pool({
   user: "dbuser",
-  //host: "localhost",
+  host: "10.1.0.101",
   database: "weightdb",
   password: "pa88w0rd",
   port: "5432"
@@ -31,7 +31,7 @@ app.get(
 
 function getWeight(req, res, next) {
   pool.connect((err, client, done) => {
-    console.log('err=', err);
+    console.log("err=", err);
     const query = "SELECT * FROM weight_log order by date desc";
     client.query(query, (error, result) => {
       done();
