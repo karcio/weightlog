@@ -55,7 +55,7 @@ function getWeight(req, res, next) {
 
 function getAvgWeight(req, res, next) {
   pool.connect((err, client, done) => {
-    const query = "select round(avg(weight)::numeric,2) as avg from weight_log";
+    const query = "select round(avg(weight)::numeric,1) as avg from weight_log";
     client.query(query, (error, result) => {
       done();
       if (error) {
