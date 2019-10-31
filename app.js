@@ -6,10 +6,10 @@ const port = 5000;
 const pg = require("pg");
 const pool = new pg.Pool({
   user: "dbuser",
-  host: "10.1.0.101",
+  //host: "10.1.0.101",
   database: "weightdb",
   password: "pa88w0rd",
-  port: "5433"
+  port: "5432"
 });
 
 app.use(express.static(path.join(__dirname, "static")));

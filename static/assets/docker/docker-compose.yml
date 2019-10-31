@@ -11,10 +11,6 @@ services:
     ports:
       - "5000:5000"
       - "9229:9229"
-    #environment:
-    #  DATABASE_URL: postgres://dbuser:pa88w0rd@db:5432/weightdb
-    #  NODE_ENV: development
-    #  PORT: 3000
     networks:
       test:
         ipv4_address: 10.1.0.100
@@ -29,7 +25,7 @@ services:
       - db-data:/var/lib/postgresql/data
       - ./db_create.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - 5433:5433
+      - 5432:5432
     networks:
       test:
         ipv4_address: 10.1.0.101
