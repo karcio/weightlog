@@ -1,19 +1,19 @@
 const path = require("path");
 const express = require("express");
+const favicon = require("express-favicon");
 const bodyParser = require("body-parser");
 const app = express();
 const port = 5000;
 const pg = require("pg");
 const pool = new pg.Pool({
   user: "dbuser",
-  //host: "10.1.0.101",
   database: "weightdb",
   password: "pa88w0rd",
   port: "5432"
 });
 
 app.use(express.static(path.join(__dirname, "static")));
-
+app.use(favicon(__dirname + "/static/assets/images/favicon.ico"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
