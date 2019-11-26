@@ -55,6 +55,57 @@
 
     <% include navbar %>
     <div class="container">
+      <div id="demo" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="assets/images/blueberries.jpg"
+              alt="blueberries"
+              width="1080"
+              height="720"
+            />
+            <div class="carousel-caption">
+              <h3>blueberries</h3>
+              <!--<p>We had such a great time in LA!</p>-->
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="assets/images/strawberries.jpg"
+              alt="strawberries"
+              width="1080"
+              height="720"
+            />
+            <div class="carousel-caption">
+              <h3>strawberries</h3>
+              <!--<p>Thank you, Chicago!</p>-->
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="assets/images/tangerines.jpg"
+              alt="tangerines"
+              width="1080"
+              height="720"
+            />
+            <div class="carousel-caption">
+              <h3>tangerines</h3>
+              <!--<p>We love the Big Apple!</p>-->
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
       <h2 class="text-center">Insert weight</h2>
       <form action="/insert" method="POST">
         <div class="form-group">

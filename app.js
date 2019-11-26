@@ -19,6 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 
+const itemsPerPage = 25;
+const page_id = 1;
+
 app.get(
   "/",
   getWeight,
@@ -26,13 +29,21 @@ app.get(
   getMinWeight,
   getMaxWeight,
   getLastRecord,
+  getAllRecordsCount,
   renderMainPage
 );
 
 function getWeight(req, res, next) {
   pool.connect((err, client, done) => {
-    console.log(err);
-    const query = "SELECT * FROM weight_log order by date desc";
+    //console.log(err);
+    const query =
+      "SELECT * FROM weight_log order by date desc LIMIT  '" +
+      itemsPerPage +
+      "' OFFSET ('" +
+      page_id +
+      "' - 1) * '" +
+      itemsPerPage +
+      "'";
     client.query(query, (error, result) => {
       done();
       if (error) {
@@ -45,6 +56,30 @@ function getWeight(req, res, next) {
         });
       } else {
         req.weight = result.rows;
+        console.log(result.rows);
+
+        return next();
+      }
+    });
+  });
+}
+
+function getAllRecordsCount(req, res, next) {
+  pool.connect((err, client, done) => {
+    //console.log(err);
+    const query = "SELECT count(*) FROM weight_log";
+    client.query(query, (error, result) => {
+      done();
+      if (error) {
+        res.status(400).json({ error });
+      }
+      if (result.rows < "1") {
+        res.status(404).send({
+          status: "Failed",
+          message: "No weight information found"
+        });
+      } else {
+        req.count = result.rows;
         console.log(result.rows);
 
         return next();
@@ -147,6 +182,7 @@ function renderMainPage(req, res) {
     avg: req.avg,
     minWeight: req.min,
     maxWeight: req.max,
+    count: req.count,
     lastRecord: req.last
   });
 }
@@ -199,5 +235,4 @@ app.get("/avg", (req, res) => {
   });
 });
 
-app.get("/about", (req, res) => res.send("Test url - working"));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
