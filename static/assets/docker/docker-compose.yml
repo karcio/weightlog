@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  app:
+    restart: always
+    build: .
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "5000:5000"
+      - "9229:9229"
+    networks:
+      test:
+        ipv4_address: 10.1.0.100
+  db:
+    restart: always
+    image: postgres:11.5-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db_create.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+    networks:
+      test:
+        ipv4_address: 10.1.0.101
+
+volumes:
+  db-data:
+
+networks:
+  test:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.1.0.0/24

@@ -56,46 +56,11 @@
     <% include navbar %>
     <div class="container">
       <br />
-      <section class="cards">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="card-group">
-              <div class="card">
-                <div class="card-block">
-                  <h4 class="card-title"><%= avg[0].avg %> kg</h4>
-                  <h6 class="subtitle">Average</h6>
-                </div>
-                <img src="assets/images/diet-avg.jpg" alt="obrazek" />
-              </div>
-              <div class="card">
-                <div class="card-block">
-                  <h4 class="card-title"><%= minWeight[0].min %> kg</h4>
-                  <h6 class="subtitle">Lowest weight</h6>
-                </div>
-                <img src="assets/images/diet-low.jpg" alt="obrazek" />
-              </div>
-              <div class="card">
-                <div class="card-block">
-                  <h4 class="card-title"><%= maxWeight[0].max %> kg</h4>
-                  <h6 class="subtitle">Highest weight</h6>
-                </div>
-                <img src="assets/images/weight-loss.jpg" alt="obrazek" />
-              </div>
-              <div class="card">
-                <div class="card-block">
-                  <h4 class="card-title"><%= lastRecord[0].weight %> kg</h4>
-                  <h6 class="subtitle">Last weight</h6>
-                </div>
-                <img src="assets/images/bmi.jpg" alt="obrazek" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
       <br />
-      <h2 class="text-center">My weight log</h2>
+      <h2 class="text-center">My all weight log</h2>
       <h5 class="text-right">
-        <span class="badge badge-pill badge-danger"><%= count[0].count %></span>
+        <span class="badge badge-pill badge-danger"><%# count[0].count %></span>
       </h5>
 
       <table class="table table-striped">
@@ -103,28 +68,19 @@
           <th>Date</th>
           <th>Weight</th>
         </tr>
-        <% for(var i=0; i < weight.length; i++) { %>
+        <% for(var i=0; i < result.length; i++) { %>
         <tr>
           <td>
-            <%= weight[i].date %>
+            <%= result[i].date %>
           </td>
           <td>
-            <%= weight[i].weight %>
+            <%= result[i].weight %>
           </td>
         </tr>
         <% } %>
       </table>
 
-      <!--
-      <ul class="pagination pagination-sm justify-content-center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>-->
+
     </div>
 
     <% include footer %>

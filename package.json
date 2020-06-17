@@ -4,14 +4,19 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js",
+    "start": "forever -w app.js",
+    "create": "node ./services/db createTables"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "mysql": "^2.16.0"
+    "express-favicon": "^2.0.1",
+    "make-runnable": "^1.3.6",
+    "pg": "^7.12.1"
   }
 }
