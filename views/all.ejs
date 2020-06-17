@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My weight log</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <section id="cover">
+      <div class="cover-caption">
+        <div class="container">
+          <div class="col-sm-10 col-sm-offset-1">
+            <h1 class="display-4">Weight logger</h1>
+            <p class="lead">
+              This is a web application which help you to monitor your weight,
+              BMI, highest and lowest weight.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <% include navbar %>
+    <div class="container">
+      <br />
+
+      <br />
+      <h2 class="text-center">My all weight log</h2>
+      <h5 class="text-right">
+        <span class="badge badge-pill badge-danger"><%# count[0].count %></span>
+      </h5>
+
+      <table class="table table-striped">
+        <tr>
+          <th>Date</th>
+          <th>Weight</th>
+        </tr>
+        <% for(var i=0; i < result.length; i++) { %>
+        <tr>
+          <td>
+            <%= result[i].date %>
+          </td>
+          <td>
+            <%= result[i].weight %>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+
+
+    </div>
+
+    <% include footer %>
+  </body>
+</html>
