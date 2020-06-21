@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/karcio/weightlog.svg?branch=master)](https://travis-ci.org/karcio/weightlog)
 # Weight log v. 1.1
 
 ## Description
