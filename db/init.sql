@@ -10,6 +10,3 @@ CREATE TABLE IF NOT EXISTS weight_log(
   weight NUMERIC(4,1) NOT NULL
 );
 INSERT INTO weight_log (date, weight) VALUES (current_date, 85.5);
-SELECT * FROM weight_log;
-\c
-\dt
