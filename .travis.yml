@@ -20,8 +20,7 @@ before_script:
   - psql -c 'create database weightdb;' -U $PGUSER
   - psql -c "CREATE USER dbuser WITH PASSWORD 'pa88w0rd';" -U $PGUSER
   - psql -c "GRANT ALL PRIVILEGES ON DATABASE weightdb TO dbuser;" -U $PGUSER
-  - psql -c "INSERT INTO weight_log (date, weight) VALUES (current_date, 85.5);" -U $PGUSER
-  #- psql --dbname=$weightdb --file=db/init.sql
+  - psql --dbname=$weightdb --file=db/init.sql
   - npm install
   - npm install --only=dev
   - mv .env.template .env
