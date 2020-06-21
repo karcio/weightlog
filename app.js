@@ -57,7 +57,6 @@ function getWeight(req, res, next) {
         res.status(400).json({
           error
         });
-        console.log(error);
       }
       if (result.rowCount > 0) {
         req.weight = result.rows;
