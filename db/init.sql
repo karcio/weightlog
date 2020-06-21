@@ -1,6 +1,9 @@
 --su - postgres
 --psql -p 5432
 \c weightdb
+ALTER USER dbuser WITH SUPERUSER;
+ALTER DATABASE weightdb OWNER TO dbuser;
+
 CREATE TABLE IF NOT EXISTS weight_log(
   id SERIAL PRIMARY KEY,
   date DATE NOT NULL,
