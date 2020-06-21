@@ -57,6 +57,7 @@ function getWeight(req, res, next) {
         res.status(400).json({
           error
         });
+        console.log(error);
       }
       if (result.rowCount > 0) {
         req.weight = result.rows;
@@ -287,4 +288,4 @@ app.get("/all", (req, res) => {
   });
 });
 
-app.listen(app_port, () => console.log(`... Application running ...`));
+app.listen(app_port, () => console.log(`... Application running on port: ` + app_port + `...`));
