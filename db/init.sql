@@ -1,6 +1,6 @@
 --su - postgres
 --psql -p 5432
---\c weightdb
+\c weightdb
 
 CREATE TABLE IF NOT EXISTS weight_log(
   id SERIAL PRIMARY KEY,
