@@ -1,5 +1,6 @@
 --su - postgres
 psql
 \c weightdb
+CREATE TABLE IF NOT EXISTS weight_log(id SERIAL PRIMARY KEY, date DATE NOT NULL DEFAULT CURRENT_DATE, weight NUMERIC(4,1) NOT NULL );
 INSERT INTO weight_log (date, weight) VALUES (current_date, 85.5);
 SELECT * FROM weight_log;
